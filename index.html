@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<title>Maooer Ho</title>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;400;500;700;900&display=swap">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+	<div class="mf_label">
+		<a href="MF Desk label print.html">MF DESK LABEL PRINT</a>
+		<div class="tips">If you need to return to the home page, please click the back button above</div>
+	</div>
+	<div class="card">
+		<img class="source" src="imgs/box.jpg" alt="" />
+		<div class="skirt"></div>
+		<div class="skirt2"></div>
+		<img class="source1" src="imgs/box.jpg"/>
+		<img class="source2" src="imgs/box.jpg"/>
+	</div>
+	<div class="pick">
+		<input type="color" id="colorPicker" value="#ff0000">
+		<input type="color" id="colorPicker2" value="#008c8c">
+	</div>
+	<script>
+	var colorPicker = document.getElementById("colorPicker");
+	colorPicker.addEventListener("input", function() {
+		// 更改CSS变量的值
+		document.documentElement.style.setProperty('--my-color', colorPicker.value);
+	}, false);
+	var colorPicker2 = document.getElementById("colorPicker2");
+	colorPicker2.addEventListener("input", function() {
+		// 更改CSS变量的值
+		document.documentElement.style.setProperty('--my-color2', colorPicker2.value);
+	}, false);
+	</script>
+</body>
+</html>
