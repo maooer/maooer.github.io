@@ -106,3 +106,6 @@ body{
 	position: relative;
 	z-index: 11;
 }
+.my_name{
+	text-align: center;
+}
