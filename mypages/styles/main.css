@@ -1,0 +1,82 @@
+body{
+    font-family:'Noto Sans SC',sans-serif;
+    margin:0 auto; /*居中对齐*/
+    max-width: 720px; /*设置最大宽度*/
+}
+section {
+    background-color: bisque;
+}
+#search-bar{
+    display:flex;
+    flex-wrap:wrap;
+    padding:30px;
+    justify-content: center;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: rgb(255, 227, 216);
+}
+#product-list{
+    display:flex;
+    flex-wrap:wrap;
+    margin-top: 5px;
+    justify-content: center;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: rgb(234, 241, 194);
+}
+.myname{
+    padding: 10px;
+    text-align: center;
+}
+
+.product-card {
+    flex:0 0 200px; /* 设置弹性项目的基本宽度为200px，且不允许项目伸缩 */
+    margin:5px;/*边距，以便换行的时候有空间*/
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    background-color: rgb(230, 230, 230);
+}
+
+.product-image {
+    padding:10px;
+    width: 200px;
+    margin:auto;
+}
+
+.product-info {
+    display:flex;
+    height: 30px;
+    font-size: 12px;
+    justify-content: left;
+    align-items:top;
+}
+
+.product-info1{
+    margin-left:10px;
+    width:50px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.product-info2{
+    text-align: left;
+    width:150px;
+}
+
+.add-to-favorites {
+    background-color: rgb(37, 166, 206);
+    border-radius: 5px;
+    border:none;
+    color:aliceblue;
+    text-align: center;
+    text-decoration: none;
+    display:inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    width:60%;
+    padding:10px 20px;
+    box-sizing: border-box;
+    margin:15px;
+}
