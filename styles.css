@@ -3,32 +3,68 @@ body{
     margin:0 auto; /*居中对齐*/
     max-width: 720px; /*设置最大宽度*/
 }
-.mf_label{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	height: 100%;
-	margin: 16px;
+.header-area{
+	display:flex;
+	justify-content: center; /* 水平居中 */
+	align-items: center; /* 垂直居中 */
+	height:50px; /*height: 100vh; 使用视口高度确保容器填充整个屏幕 */
+	background-color: #424242;
 }
-.mf_label a {
-	color: rgb(156, 71, 1);
-	text-decoration: none;
-	font-weight:700;
-	font-size:20px;
+.logo{
+	font-weight: 700;
+	font-size: 18px;
+	color:rgb(211, 211, 211);
 }
-.mf_label a:hover{
-	text-decoration: underline;
-}
-.tips{
-	color: rgb(202, 152, 59);
-	text-align: center;
-	font-size: 10px;
-}
+
 .area-1{
 	display: flex;
+	flex:wrap; /*允许换行*/
+	gap:10px;
+	margin-top:20px;
+	margin:10px;
+	/* padding: 5px;这设置每个 feature-block 之间的间隔，使其更整洁 */
+	align-items: stretch;
 }
+.feature-block {
+	display: flex;
+	flex-direction: column;/* 子元素从上到下堆叠 */
+	flex:1;
+	align-items: center;
+	/* justify-content: center; */
+	text-align: center;
+	min-width: calc(33.33% -10px);
+	box-sizing: border-box;/* 确保边框和内边距在宽度内 */
+	border: 1px solid gray;
+	padding: 5px;
+	justify-content: space-between; /* 在元素之间分配空间，这样按钮将被推到底部 */
+}
+.feature-title{
+	color: #008c8c;
+	text-decoration: none;
+	font-weight:700;
+	font-size:12px;
+	padding:10px;
+}
+.feature-desc{
+	color:gray;
+	padding: 5px;
+	font-weight:400;
+	font-size:8px;
+}
+.feature-btn{
+	padding: 10px 20px; /* 按钮内的空间填充 */
+	margin:10px;
+	background-color: #008c8c;
+	border-radius: 3px; /* 圆角 */
+	font-size: 16px; /* 文字大小 */
+	color: white; /* 文字颜色 */
+	text-decoration: none; /* 去掉链接默认的下划线 */
+	transition: background-color 0.3s; /* 背景颜色过渡效果 */
+}
+.feature-btn:hover{
+	background-color: gray;
+}
+
 .card {
 	max-width: 400px;
 	max-height: 400px;
@@ -110,5 +146,6 @@ body{
 	z-index: 11;
 }
 .my_name{
+	font-size: 4px;
 	text-align: center;
 }
