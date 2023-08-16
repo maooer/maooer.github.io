@@ -1,5 +1,5 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js';
-import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/OBJLoader.js';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three/build/three.module.js';
+import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three/examples/jsm/loaders/OBJLoader.js';
 
 let camera, scene, renderer;
 
