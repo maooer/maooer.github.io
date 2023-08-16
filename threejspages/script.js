@@ -55,3 +55,31 @@ function animate() {
 // Call our init function to set everything up, then call animate to start the animation loop
 init();
 animate();
+
+const loader = new OBJLoader();
+loader.load(
+    'mybottle.obj',
+    function (object) {
+        // 当加载完成时
+        scene.add(object);
+    },
+    function (xhr) {
+        // 当加载过程进行中时
+        let percentComplete = (xhr.loaded / xhr.total) * 100;
+        updateProgressBar(percentComplete);
+    },
+    function (error) {
+        // 当加载发生错误时
+        console.error('An error happened', error);
+    }
+);
+
+function updateProgressBar(percentComplete) {
+    const progressBar = document.getElementById("progress-bar");
+    progressBar.style.width = `${percentComplete}%`;
+
+    // 如果加载已经完成，您可以隐藏进度条或执行其他操作
+    if (percentComplete === 100) {
+        progressBar.style.display = 'none';
+    }
+}
