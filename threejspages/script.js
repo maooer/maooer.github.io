@@ -1,6 +1,5 @@
-import * as THREE from 'libs/three.js';
-import { OBJLoader } from 'libs/jsm/loaders/OBJLoader.js';
-
+import * as THREE from './libs/build/three.module.js';
+import { OBJLoader } from './libs/examples/jsm/loaders/OBJLoader.js';
 
 let camera, scene, renderer;
 
