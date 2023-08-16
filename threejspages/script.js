@@ -15,6 +15,18 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
+    // Add ambient light
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    // Add directional light
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(0, 1, 1);
+    scene.add(directionalLight);
+
+    // Position the camera
+    camera.position.z = 5;
+
     // Resize listener
     window.addEventListener('resize', () => {
         const newWidth = window.innerWidth;
@@ -25,19 +37,23 @@ function init() {
     });
 
     // Cube
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+    let loader = new THREE.OBJLoader();
+    loader.load('mybottle.obj', function (object) {
+        scene.add(object);
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', onWindowResize, false);
 }
 
 function animate() {
-    requestAnimationFrame(animate);
-
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-
-    renderer.render(scene, camera);
+    function animate() {
+        requestAnimationFrame(animate);
+    
+        // Render the scene and the camera
+        renderer.render(scene, camera);
+    }
+    
 }
 
 init();
