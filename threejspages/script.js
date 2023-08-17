@@ -13,10 +13,10 @@ function init() {
 
     // Create a WebGLRenderer and set its width and height
     renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth*0.5, window.innerHeight*0.5);
+    renderer.setSize(window.innerWidth, window.innerHeight);
     
     // Append the renderer to the body
-    document.body.appendChild(renderer.domElement);
+    document.getElementById('three-container').appendChild(renderer.domElement);
 
     // Position the camera so that we can view our bottle.
     camera.position.z = 5;
@@ -46,10 +46,16 @@ function init() {
 // Resize the renderer and adjust the camera when the window is resized
 function onWindowResize() {
     const container = document.getElementById('three-container');
-    camera.aspect = container.offsetWidth / container.offsetHeight;
+    
+    // Get dimensions of the container
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    camera.aspect = width / height;
     camera.updateProjectionMatrix();
-    renderer.setSize(container.offsetWidth, container.offsetHeight);
+    renderer.setSize(width, height);
 }
+
 
 
 // Animation loop
@@ -66,6 +72,8 @@ const loader = new OBJLoader();
 loader.load(
     'mybottle.obj',
     function (object) {
+        object.position.y -= 0.25;
+        camera.position.y += 1
         // 当加载完成时
         scene.add(object);
     },
