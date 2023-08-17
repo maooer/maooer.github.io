@@ -1,5 +1,6 @@
 import * as THREE from './libs/build/three.module.js';
 import { OBJLoader } from './libs/examples/jsm/loaders/OBJLoader.js';
+import { OrbitControls } from "./libs/examples/jsm/controls/OrbitControls.js";
 
 let camera, scene, renderer;
 
@@ -12,7 +13,7 @@ function init() {
 
     // Create a WebGLRenderer and set its width and height
     renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth*0.5, window.innerHeight*0.5);
     
     // Append the renderer to the body
     document.body.appendChild(renderer.domElement);
@@ -35,16 +36,21 @@ function init() {
         scene.add(object);
     });
 
+    // Add OrbitControls for interactivity
+    const controls = new OrbitControls(camera, renderer.domElement);
+
     // Adjust the view when the window is resized
     window.addEventListener('resize', onWindowResize, false);
 }
 
 // Resize the renderer and adjust the camera when the window is resized
 function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    const container = document.getElementById('three-container');
+    camera.aspect = container.offsetWidth / container.offsetHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(container.offsetWidth, container.offsetHeight);
 }
+
 
 // Animation loop
 function animate() {
