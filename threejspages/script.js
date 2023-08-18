@@ -1,6 +1,8 @@
 import * as THREE from './libs/build/three.module.js';
 import { OBJLoader } from './libs/examples/jsm/loaders/OBJLoader.js';
 import { OrbitControls } from "./libs/examples/jsm/controls/OrbitControls.js";
+import { TextureLoader } from './libs/build/three.module.js';
+
 
 let camera, scene, renderer;
 
@@ -9,7 +11,9 @@ function init() {
     scene = new THREE.Scene();
 
     // Setup camera with 75° field of view, and aspect based on window dimensions. Near and far clipping planes at 0.1 and 1000
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.5, 1000);
+
+
 
     // Create a WebGLRenderer and set its width and height
     renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -19,7 +23,7 @@ function init() {
     document.getElementById('three-container').appendChild(renderer.domElement);
 
     // Position the camera so that we can view our bottle.
-    camera.position.z = 5;
+    camera.position.z = 10;
 
     // Ambient light
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -30,14 +34,24 @@ function init() {
     directionalLight.position.set(0, 1, 1);
     scene.add(directionalLight);
 
-    // Load your OBJ model
-    const loader = new OBJLoader();
-    loader.load('mybottle.obj', function (object) {
-        scene.add(object);
+    const textureLoader = new TextureLoader();
+    textureLoader.load('texture.jpg', function(texture) {
+        // Load your OBJ model
+        loader.load('mybottle.obj', function (object) {
+            object.traverse(function(child){
+                if(child.isMesh){
+                    child.material.map = texture;
+                    child.material.needsUpdate = true;
+                }
+            });
+            scene.add(object);
+        });
     });
 
     // Add OrbitControls for interactivity
     const controls = new OrbitControls(camera, renderer.domElement);
+    controls.target.set(0,1,0);
+    controls.update();
 
     // Adjust the view when the window is resized
     window.addEventListener('resize', onWindowResize, false);
@@ -72,8 +86,6 @@ const loader = new OBJLoader();
 loader.load(
     'mybottle.obj',
     function (object) {
-        object.position.y -= 0.25;
-        camera.position.y += 1
         // 当加载完成时
         scene.add(object);
     },
