@@ -95,6 +95,11 @@ body {
     background-color: #001f1f; /* 按下时的背景色 */
     transform: scale(0.98); /* 按下时的缩小效果 */
 }
+.but:focus {
+    outline: none; /* 移除默认的聚焦轮廓 */
+    background-color: #004646; /* 聚焦时的背景色 */
+    transform: scale(1.05); /* 聚焦时的放大效果 */
+}
 .name {
 	font-size:1.6rem;
 	font-weight: bolder;
